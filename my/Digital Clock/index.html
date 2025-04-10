@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="./sytle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="clock-container">
+            <div class="clock-header">
+                <h1>Digital Clock</h1>
+                <div class="mode-toggle">
+                    <i class="fas fa-sun" id="light-icon"></i>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="mode-toggle">
+                        <label for="mode-toggle"></label>
+                    </div>
+                    <i class="fas fa-moon" id="dark-icon"></i>
+                </div>
+            </div>
+            
+            <div class="clock-display">
+                <div class="time" id="time">00:00:00</div>
+                <div class="format-toggle">
+                    <button id="format-toggle-btn">Switch to 12-Hour</button>
+                </div>
+                <div class="date" id="date">Monday, January 1, 2025</div>
+                <div class="timezone" id="timezone">UTC+00:00</div>
+            </div>
+            
+            <div class="timezone-selector">
+                <label for="timezone-select">Select Timezone:</label>
+                <select id="timezone-select">
+                    <option value="-12">UTC-12:00</option>
+                    <option value="-11">UTC-11:00</option>
+                    <option value="-10">UTC-10:00</option>
+                    <option value="-9">UTC-09:00</option>
+                    <option value="-8">UTC-08:00</option>
+                    <option value="-7">UTC-07:00</option>
+                    <option value="-6">UTC-06:00</option>
+                    <option value="-5">UTC-05:00</option>
+                    <option value="-4">UTC-04:00</option>
+                    <option value="-3">UTC-03:00</option>
+                    <option value="-2">UTC-02:00</option>
+                    <option value="-1">UTC-01:00</option>
+                    <option value="0" selected>UTC+00:00</option>
+                    <option value="1">UTC+01:00</option>
+                    <option value="2">UTC+02:00</option>
+                    <option value="3">UTC+03:00</option>
+                    <option value="4">UTC+04:00</option>
+                    <option value="5">UTC+05:00</option>
+                    <option value="5.5">UTC+05:30</option>
+                    <option value="6">UTC+06:00</option>
+                    <option value="7">UTC+07:00</option>
+                    <option value="8">UTC+08:00</option>
+                    <option value="9">UTC+09:00</option>
+                    <option value="10">UTC+10:00</option>
+                    <option value="11">UTC+11:00</option>
+                    <option value="12">UTC+12:00</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

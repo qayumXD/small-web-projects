@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - My Website</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-globe"></i>
+            <h1>My Website</h1>
+        </div>
+        <!-- Hamburger menu for mobile -->
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <!-- Navigation Bar -->
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li class="dropdown">
+                    <a href="about.html">About <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="about.html#team">Our Team</a></li>
+                        <li><a href="about.html#mission">Our Mission</a></li>
+                        <li><a href="about.html#history">Our History</a></li>
+                    </ul>
+                </li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <section class="hero">
+            <h2>Welcome to Our Website</h2>
+            <p>This is the home page of our master page layout demonstration.</p>
+        </section>
+
+        <section class="content">
+            <h2>Featured Content</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="/api/placeholder/400/300" alt="Feature 1">
+                    <h3>Feature One</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec.</p>
+                </div>
+                <div class="card">
+                    <img src="/api/placeholder/400/300" alt="Feature 2">
+                    <h3>Feature Two</h3>
+                    <p>Vestibulum commodo felis quis tortor malesuada porta. Fusce quis lacus eget dui lacinia placerat.</p>
+                </div>
+                <div class="card">
+                    <img src="/api/placeholder/400/300" alt="Feature 3">
+                    <h3>Feature Three</h3>
+                    <p>Pellentesque sed sapien lorem, at lacinia urna. In hac habitasse platea dictumst. Vivamus vel justo.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>We are a company dedicated to providing the best services to our clients.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Street, City, Country</p>
+                <p><i class="fas fa-phone"></i> +1 234 567 8900</p>
+                <p><i class="fas fa-envelope"></i> info@example.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 My Website. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
