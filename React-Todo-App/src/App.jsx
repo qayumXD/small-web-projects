@@ -1,62 +1,45 @@
-
+// src/App.js
 import React, { useState } from 'react';
 
 function App() {
-  // State for the list of todos
   const [todos, setTodos] = useState([]);
-  // State for the text in the input field
   const [inputValue, setInputValue] = useState('');
-  // NEW: State for the current filter ('all', 'active', 'completed')
-  const [filter, setFilter] = useState('all'); // Default filter is 'all'
+  const [filter, setFilter] = useState('all');
 
-  // Handles changes in the input field
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
 
-  // Adds a new todo item
   const handleAddTodo = () => {
     if (inputValue.trim() !== '') {
       const newTodo = {
-        id: Date.now(), // Unique ID
+        id: Date.now(),
         text: inputValue,
-        completed: false // New todos are not completed by default
+        completed: false
       };
-      setTodos([...todos, newTodo]); // Add to the list
-      setInputValue(''); // Clear input field
+      setTodos([...todos, newTodo]);
+      setInputValue('');
     }
   };
 
-  // Allows adding a todo by pressing Enter
   const handleInputKeyPress = (event) => {
     if (event.key === 'Enter') {
       handleAddTodo();
     }
   };
 
-  // Deletes a todo item by its id
   const handleDeleteTodo = (idToDelete) => {
-    const updatedTodos = todos.filter(todo => todo.id !== idToDelete);
-    setTodos(updatedTodos);
+    setTodos(todos.filter(todo => todo.id !== idToDelete));
   };
 
-  // NEW: Toggles the 'completed' status of a todo item
   const handleToggleComplete = (idToToggle) => {
-    const updatedTodos = todos.map(todo =>
-      todo.id === idToToggle ? { ...todo, completed: !todo.completed } : todo
+    setTodos(
+      todos.map(todo =>
+        todo.id === idToToggle ? { ...todo, completed: !todo.completed } : todo
+      )
     );
-    // Explanation for the line above:
-    // 1. We .map() over the current 'todos' array to create a new array.
-    // 2. For each 'todo':
-    //    - If 'todo.id' matches 'idToToggle', we create a new object for this todo.
-    //      - We use the spread operator '{ ...todo }' to copy all existing properties of the todo.
-    //      - Then, we override the 'completed' property with its opposite value ('!todo.completed').
-    //    - If 'todo.id' does not match, we return the 'todo' object unchanged.
-    // 3. 'setTodos' updates the state with this new 'updatedTodos' array, triggering a re-render.
-    setTodos(updatedTodos);
   };
 
-  // NEW: Logic to filter todos based on the current 'filter' state
   const getFilteredTodos = () => {
     if (filter === 'active') {
       return todos.filter(todo => !todo.completed);
@@ -64,22 +47,23 @@ function App() {
     if (filter === 'completed') {
       return todos.filter(todo => todo.completed);
     }
-    return todos; // For 'all'
+    return todos;
   };
 
-  // Get the todos to display based on the current filter
   const filteredTodos = getFilteredTodos();
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10 font-sans">
-      <div className="bg-white p-6 md:p-8 rounded-lg shadow-xl w-full max-w-lg"> {/* Increased max-width slightly */}
-        <h1 className="text-3xl md:text-4xl font-bold text-center text-gray-700 mb-6">My Todo List</h1>
+    // Enhanced page background and font
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 to-sky-100 flex flex-col items-center py-8 sm:py-12 px-4 font-sans selection:bg-sky-300 selection:text-sky-900">
+      {/* Main card container with improved shadow and width */}
+      <div className="bg-white p-6 sm:p-8 rounded-xl shadow-2xl w-full max-w-xl"> {/* Slightly wider card, more pronounced shadow */}
+        <h1 className="text-3xl sm:text-4xl font-bold text-center text-slate-700 mb-8">My Todo List</h1>
 
-        {/* Input area */}
-        <div className="flex mb-6">
+        {/* Input area with enhanced styling */}
+        <div className="flex mb-6 shadow-sm rounded-lg">
           <input
             type="text"
-            className="flex-grow p-3 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow text-sm md:text-base"
+            className="flex-grow p-3 border border-slate-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all text-sm sm:text-base placeholder-slate-400"
             placeholder="Add a new task..."
             value={inputValue}
             onChange={handleInputChange}
@@ -87,63 +71,60 @@ function App() {
           />
           <button
             onClick={handleAddTodo}
-            className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-r-md transition-colors text-sm md:text-base"
+            className="bg-sky-500 hover:bg-sky-600 text-white p-3 px-4 sm:px-6 rounded-r-lg transition-colors duration-150 ease-in-out text-sm sm:text-base font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-1"
           >
             Add
           </button>
         </div>
 
-        {/* NEW: Filter buttons */}
-        <div className="flex justify-center space-x-2 mb-6">
-          {/*
-            We define an array of filter options and map over it to create buttons.
-            This is a DRY (Don't Repeat Yourself) way to create similar buttons.
-          */}
+        {/* Filter buttons with improved styling and transitions */}
+        <div className="flex justify-center space-x-2 sm:space-x-3 mb-8">
           {['all', 'active', 'completed'].map((filterType) => (
             <button
               key={filterType}
-              onClick={() => setFilter(filterType)} // Set the filter state when a button is clicked
-              className={`py-2 px-4 rounded-md text-sm font-medium transition-all
+              onClick={() => setFilter(filterType)}
+              className={`py-2 px-3 sm:px-4 rounded-md text-xs sm:text-sm font-medium transition-all duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-1
                 ${filter === filterType
-                  ? 'bg-blue-600 text-white shadow-md' // Active filter button style
-                  : 'bg-gray-200 hover:bg-gray-300 text-gray-700' // Inactive filter button style
+                  ? 'bg-sky-600 text-white shadow-lg transform scale-105' // Enhanced active filter style
+                  : 'bg-slate-200 hover:bg-slate-300 text-slate-700 hover:shadow-md' // Enhanced inactive filter style
                 }`}
             >
-              {/* Capitalize the first letter of the filter type for display */}
               {filterType.charAt(0).toUpperCase() + filterType.slice(1)}
             </button>
           ))}
         </div>
 
-        {/* Todo List */}
-        <ul className="space-y-3"> {/* Increased space between items slightly */}
-          {/* MODIFIED: Map over 'filteredTodos' instead of 'todos' */}
+        {/* Todo List with enhanced item styling */}
+        <ul className="space-y-3">
           {filteredTodos.map((todo) => (
             <li
               key={todo.id}
-              className={`bg-gray-50 p-3 rounded-md shadow-sm flex items-center justify-between transition-all
-                ${todo.completed ? 'opacity-60' : 'opacity-100'}` // Visual cue for completed items
+              // Enhanced list item styling with hover effect
+              className={`bg-slate-50 hover:bg-slate-100 p-3 rounded-lg shadow-sm flex items-center justify-between transition-all duration-150 ease-in-out group
+                ${todo.completed ? 'opacity-70' : ''}`
               }
             >
-              <div className="flex items-center flex-grow">
-                {/* NEW: Checkbox for toggling complete status */}
+              <div className="flex items-center flex-grow min-w-0"> {/* Added min-w-0 for better text truncation if needed */}
                 <input
                   type="checkbox"
-                  checked={todo.completed} // Bind 'checked' status to 'todo.completed'
-                  onChange={() => handleToggleComplete(todo.id)} // Call handler on change
-                  className="h-5 w-5 text-blue-500 border-gray-300 rounded focus:ring-blue-400 mr-3 cursor-pointer"
+                  checked={todo.completed}
+                  onChange={() => handleToggleComplete(todo.id)}
+                  // Enhanced checkbox styling
+                  className="h-5 w-5 text-sky-500 border-slate-300 rounded focus:ring-sky-400 focus:ring-offset-1 mr-3 sm:mr-4 cursor-pointer flex-shrink-0"
                 />
-                {/* MODIFIED: Apply line-through style if completed */}
                 <span
-                  className={`flex-grow text-gray-700 cursor-pointer ${todo.completed ? 'line-through text-gray-500' : ''}`}
-                  onClick={() => handleToggleComplete(todo.id)} // Also allow toggling by clicking text
+                  // Enhanced text styling for completed items and hover effect
+                  className={`flex-grow text-slate-700 cursor-pointer truncate ${todo.completed ? 'line-through text-slate-400' : ''}`}
+                  onClick={() => handleToggleComplete(todo.id)}
+                  title={todo.text} // Add title for full text on hover if truncated
                 >
                   {todo.text}
                 </span>
               </div>
               <button
                 onClick={() => handleDeleteTodo(todo.id)}
-                className="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-2 md:px-3 rounded-md text-xs md:text-sm transition-colors ml-2 flex-shrink-0" // Added ml-2 and flex-shrink-0
+                // Enhanced delete button styling with group-hover visibility
+                className="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-2 sm:px-3 rounded-md text-xs sm:text-sm transition-all duration-150 ease-in-out ml-2 flex-shrink-0 opacity-70 group-hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-1"
               >
                 Delete
               </button>
@@ -151,15 +132,17 @@ function App() {
           ))}
         </ul>
 
-        {/* Message if no todos match the current filter */}
+        {/* Conditional messages with consistent margin */}
         {filteredTodos.length === 0 && todos.length > 0 && (
-          <p className="text-center text-gray-500 mt-6">No tasks match the current filter.</p>
+          <p className="text-center text-slate-500 mt-8 text-sm">No tasks match the current filter.</p>
         )}
-        {/* Message if there are no todos at all */}
         {todos.length === 0 && (
-          <p className="text-center text-gray-500 mt-6">No tasks yet. Add some!</p>
+          <p className="text-center text-slate-500 mt-8 text-sm">No tasks yet. Add some!</p>
         )}
       </div>
+      <footer className="text-center mt-8 text-xs text-slate-500">
+        <p>A Simple React Todo App</p>
+      </footer>
     </div>
   );
 }
