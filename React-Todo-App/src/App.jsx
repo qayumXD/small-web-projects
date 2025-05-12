@@ -56,6 +56,7 @@ function App() {
     // Enhanced page background and font
     <div className="min-h-screen bg-gradient-to-br from-slate-100 to-sky-100 flex flex-col items-center py-8 sm:py-12 px-4 font-sans selection:bg-sky-300 selection:text-sky-900">
       {/* Main card container with improved shadow and width */}
+      <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"></link>
       <div className="bg-white p-6 sm:p-8 rounded-xl shadow-2xl w-full max-w-xl"> {/* Slightly wider card, more pronounced shadow */}
         <h1 className="text-3xl sm:text-4xl font-bold text-center text-slate-700 mb-8">My Todo List</h1>
 

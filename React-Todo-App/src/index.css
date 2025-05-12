@@ -1,0 +1,133 @@
+
+
+/* Reset and base styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Orbitron', sans-serif;
+    background: radial-gradient(ellipse at bottom, #0f2027, #203a43, #2c5364);
+    color: #e0f7fa;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Centering main container */
+  #root {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  /* Futuristic card */
+  div.bg-white {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+    backdrop-filter: blur(20px);
+    border-radius: 1.5rem;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.2), 0 0 80px rgba(0, 100, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.15);
+  }
+  
+  /* Titles */
+  h1 {
+    color: #00e5ff;
+    text-shadow: 0 0 5px #00e5ff, 0 0 10px #00bcd4;
+  }
+  
+  /* Inputs */
+  input[type="text"] {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: none;
+  }
+  
+  input[type="text"]::placeholder {
+    color: #b2ebf2;
+  }
+  
+  /* Buttons */
+  button {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  
+  button.bg-sky-500 {
+    background: linear-gradient(135deg, #00e5ff, #007aff);
+    color: #000;
+    box-shadow: 0 0 10px #00e5ff;
+  }
+  
+  button.bg-sky-500:hover {
+    background: linear-gradient(135deg, #00bcd4, #0051a3);
+    box-shadow: 0 0 20px #00e5ff;
+  }
+  
+  /* Filters */
+  button.bg-slate-200 {
+    background: rgba(255, 255, 255, 0.08);
+    color: #80deea;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+  }
+  
+  button.bg-slate-200:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+  
+  /* Active filter button */
+  button.bg-sky-600 {
+    background: #00e5ff;
+    color: #000;
+    box-shadow: 0 0 15px #00e5ff;
+  }
+  
+  /* Todo items */
+  li {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    color: #e0f7fa;
+  }
+  
+  li:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  
+  /* Completed todo text */
+  .line-through {
+    text-decoration: line-through;
+    color: #80deea;
+  }
+  
+  /* Delete button */
+  button.bg-red-500 {
+    background: linear-gradient(135deg, #ff1744, #d50000);
+    box-shadow: 0 0 10px #ff1744;
+  }
+  
+  button.bg-red-500:hover {
+    background: linear-gradient(135deg, #d32f2f, #b71c1c);
+    box-shadow: 0 0 15px #ff1744;
+  }
+  
+  /* Footer */
+  footer {
+    color: #4dd0e1;
+    margin-top: 1.5rem;
+    text-shadow: 0 0 5px #00e5ff;
+  }
+  
+  /* Scrollbar customization (optional) */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #00e5ff;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
